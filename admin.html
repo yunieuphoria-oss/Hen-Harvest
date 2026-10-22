@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard — Hen & Harvest</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-nav {
+      background-color: var(--color-forest);
+      color: #fff;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admin-nav .brand-name { color: #fff; }
+    .admin-container {
+      max-width: 1280px;
+      margin: 2.5rem auto;
+      padding: 0 2rem;
+    }
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .stat-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      padding: 1.25rem;
+      border-radius: 2px;
+    }
+    .stat-val {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      color: var(--color-forest);
+    }
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 2.5rem;
+    }
+    .form-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      padding: 1.5rem;
+      border-radius: 2px;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      color: var(--color-olive);
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 0.6rem;
+      border: 1px solid var(--color-border-dark);
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      border-radius: 2px;
+    }
+    .table-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      padding: 1.5rem;
+      border-radius: 2px;
+      overflow-x: auto;
+    }
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+    .admin-table th, .admin-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--color-border);
+      text-align: left;
+    }
+    .admin-table th {
+      background-color: var(--bg-secondary);
+      font-weight: 600;
+      color: var(--color-forest);
+    }
+    .btn-sm {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.75rem;
+    }
+    .btn-danger {
+      background-color: #8B0000;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="admin-nav">
+    <div class="brand-logo">
+      <span class="brand-mark" style="color:#A58A58;">◆</span>
+      <span class="brand-name">Hen &amp; Harvest Admin</span>
+    </div>
+    <a href="index.html" class="btn btn-secondary" style="color:#fff; border-color:#fff;">View Storefront &rarr;</a>
+  </header>
+
+  <main class="admin-container">
+    <div style="margin-bottom: 2rem;">
+      <h1 style="font-size:2.2rem;">Inventory &amp; Flock Manager</h1>
+      <p style="color:#666; font-size:0.9rem;">Internal portal for adding, updating, and removing poultry listings.</p>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <span class="eyebrow">Total Listings</span>
+        <div class="stat-val" id="statTotal">0</div>
+      </div>
+      <div class="stat-card">
+        <span class="eyebrow">Head Count</span>
+        <div class="stat-val" id="statStock">0</div>
+      </div>
+      <div class="stat-card">
+        <span class="eyebrow">Low Stock Alerts</span>
+        <div class="stat-val" id="statLow">0</div>
+      </div>
+      <div class="stat-card">
+        <span class="eyebrow">Valuation</span>
+        <div class="stat-val" id="statValue">₱0</div>
+      </div>
+    </div>
+
+    <div class="admin-grid">
+      <!-- Add / Edit Form -->
+      <div class="form-card">
+        <h3 style="font-size:1.4rem; margin-bottom:1.25rem;" id="formTitle">Add New Bird</h3>
+        <form id="productForm">
+          <input type="hidden" id="prodId">
+          
+          <div class="form-group">
+            <label for="prodName">Listing Name</label>
+            <input type="text" id="prodName" required placeholder="e.g. San Jose Layer">
+          </div>
+
+          <div class="form-group">
+            <label for="prodBreed">Breed</label>
+            <input type="text" id="prodBreed" required placeholder="e.g. Manok Bisaya">
+          </div>
+
+          <div class="form-group">
+            <label for="prodAge">Age Group</label>
+            <select id="prodAge" required>
+              <option value="4 Months">4 Months</option>
+              <option value="5 Months">5 Months</option>
+              <option value="6+ Months">6+ Months</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="prodPrice">Price (₱)</label>
+            <input type="number" id="prodPrice" required min="0" step="10">
+          </div>
+
+          <div class="form-group">
+            <label for="prodStock">Stock Available</label>
+            <input type="number" id="prodStock" required min="0">
+          </div>
+
+          <div class="form-group">
+            <label for="prodImage">Image URL</label>
+            <input type="url" id="prodImage" required placeholder="https://images.unsplash.com/...">
+          </div>
+
+          <div class="form-group">
+            <label for="prodDesc">Full Description</label>
+            <textarea id="prodDesc" rows="3" required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="prodChar">Characteristics</label>
+            <input type="text" id="prodChar" placeholder="e.g. Hardy, High Layer">
+          </div>
+
+          <button type="submit" class="btn btn-primary full-width" id="saveBtn">Save Listing</button>
+          <button type="button" class="btn btn-secondary full-width hidden" id="cancelBtn" style="margin-top:0.5rem;">Cancel Edit</button>
+        </form>
+      </div>
+
+      <!-- Inventory Table -->
+      <div class="table-card">
+        <h3 style="font-size:1.4rem; margin-bottom:1rem;">Active Inventory</h3>
+        <table class="admin-table">
+          <thead>
+            <tr>
+              <th>Bird Name</th>
+              <th>Breed</th>
+              <th>Age</th>
+              <th>Price</th>
+              <th>Stock</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminTableBody">
+            <!-- Dynamic Admin Rows -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>

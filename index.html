@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hen & Harvest — Fine Philippine Poultry</title>
+  
+  <!-- Google Fonts: Cormorant Garamond & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <span class="brand-mark">◆</span>
+        <span class="brand-name">Hen &amp; Harvest</span>
+      </a>
+      
+      <ul class="nav-links">
+        <li><a href="#shop" class="active">Shop</a></li>
+        <li><a href="#categories">Categories</a></li>
+        <li><a href="#our-farm">Our Farm</a></li>
+        <li><a href="#about">About</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="cart-trigger" id="openCartBtn" aria-label="Open Shopping Cart">
+          <span class="cart-label">Cart</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-container">
+      <div class="hero-content">
+        <span class="eyebrow">From Our Farm To Your Table</span>
+        <h1 class="hero-heading">A Little Closer to the Countryside.</h1>
+        <p class="hero-subtext">Thoughtfully raised poultry, rooted in the simplicity of farm life and the richness of Filipino tradition.</p>
+        <div class="hero-actions">
+          <a href="#shop" class="btn btn-primary">Explore Our Chickens</a>
+          <a href="#our-farm" class="text-link">Our Farm Story &rarr;</a>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?auto=format&fit=crop&w=1200&q=80" alt="Philippine Native Chickens in countryside greenery" class="hero-img">
+      </div>
+    </div>
+  </section>
+
+  <!-- Age Categories Preview -->
+  <section class="categories-section" id="categories">
+    <div class="section-container">
+      <div class="section-header center">
+        <span class="eyebrow">Age Groupings</span>
+        <h2 class="section-title">Nurtured Across Every Stage</h2>
+        <p class="section-subtitle">Select by development phase to match your farm or backyard flock requirements.</p>
+      </div>
+
+      <div class="category-grid">
+          <div class="category-card" data-category="4 Months">
+           <div class="category-img-wrap">
+             <img src="BANABA SHEKEN.jpg" alt="Philippine Native Chicken">
+        </div>
+          <div class="category-info">
+           <span class="category-age">4 Months Old</span>
+            <h3 class="category-name">Banaba Native Chicken</h3>
+            <p>Known as the original Filipino fighting bird, the Banaba chicken originates from Batangas (Southern Luzon) and is valued as a hardy gamecock, layer, and broiler.</p>
+            <button class="cat-filter-btn" data-age="4 Months">
+        </button>
+    </div>
+</div>
+
+       
+      <div class="category-card" data-category="5 Months">
+        <div class="category-img-wrap">
+          <img src="DARAG COCKEREL SHEKEN.jpg" alt="5-Month-Old Philippine Native Darag Cockerel">
+      </div>
+       <div class="category-info">
+          <span class="category-age">5 Months Old</span>
+          <h4 class="category-name"> Darag Panay Chicken </h4>
+          <p>Native to Panay Island, the Darag chicken is a popular heritage breed prized for its lean, smoky, and flavorful meat—ideal for Inasal and Tinola.</p>
+          <button class="cat-filter-btn" data-age="5 Months">
+    </button>
+  </div>
+</div>
+
+        <div class="category-card" data-category="6+ Months">
+          <div class="category-img-wrap">
+            <img src="BOLINAO SHEKEN DELE ESDA.jpeg" alt="6 Month and Older Chickens">
+          </div>
+          <div class="category-info">
+            <span class="category-age">6 Months Old</span>
+            <h5 class="category-name">Bolinao Pangasinan Chicken</h5>
+            <p>Hailing from Pangasinan, the Bolinao chicken is an efficient free-range breed suited for both meat and egg production.</p>
+            <button class="cat-filter-btn" data-age="6 Months"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ 
+<!-- Product Catalogue: Meet the Flock -->
+<section class="shop-section" id="shop">
+  <div class="section-container">
+
+    <!-- Catalogue Heading -->
+    <div class="shop-header">
+      <div class="shop-heading">
+        <span class="eyebrow">THE FARM COLLECTION</span>
+        <h2 class="section-title">Meet the Flock</h2>
+        <p class="section-subtitle">
+          A curated collection of Philippine native chickens,
+          each with its own character and heritage.
+        </p>
+      </div>
+
+      <!-- Catalogue Controls -->
+      <div class="catalog-controls">
+
+        <div class="search-box">
+          <input
+            type="search"
+            id="searchInput"
+            placeholder="Search our collection..."
+            aria-label="Search chickens by name or breed"
+          >
+        </div>
+
+        <div class="filter-select-wrap">
+          <select id="ageFilter" aria-label="Filter by age">
+            <option value="all">All Ages</option>
+            <option value="4 Months">4 Months</option>
+            <option value="5 Months">5 Months</option>
+            <option value="6 Months">6 Months</option>
+          </select>
+        </div>
+
+        <div class="filter-select-wrap">
+          <select id="sortBy" aria-label="Sort products">
+            <option value="featured">Featured First</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Product Collection -->
+    <div
+      class="product-grid"
+      id="productGrid"
+      aria-live="polite"
+    >
+      <!-- Product cards are rendered by script.js -->
+    </div>
+
+    <!-- Empty Search Results -->
+    <div class="empty-state hidden" id="emptyState">
+      <h3>No chickens found</h3>
+      <p>
+        Try another name or adjust your selected filters
+        to explore our collection.
+      </p>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        id="resetFiltersBtn"
+      >
+        Clear Filters
+      </button>
+    </div>
+
+  </div>
+</section>
+
+  <!-- Our Farm Story -->
+  <section class="farm-section" id="our-farm">
+    <div class="section-container">
+      <div class="farm-grid">
+        <div class="farm-image-column">
+          <img src="ABAWT FARM SHEKENS.jpg" alt="Peaceful Philippine Countryside Farm" class="farm-img">
+        </div>
+        <div class="farm-text-column">
+          <span class="eyebrow">Authentic Provenance</span>
+          <h2 class="farm-heading">Raised with Care. Rooted in Home.</h2>
+          <p class="farm-body">Our pastures are located in the peaceful rolling countryside of Luzon, where native and heritage breeds are cared for under natural tropical sunlight. We honor centuries-old Filipino farming practices combined with modern sanitation and feed management.</p>
+          <p class="farm-body">Whether you are building a small homestead flock or expanding a commercial native egg supply, each bird is selected for vibrant vitality, authentic genetics, and calm temperament.</p>
+          <div class="farm-stats">
+            <div class="stat-item">
+              <span class="stat-number">100%</span>
+              <span class="stat-label">Locally Raised Strains</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number">Natural</span>
+              <span class="stat-label">Grain &amp; Forage Diet</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer" id="about">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#" class="brand-logo footer-logo">
+          <span class="brand-mark">◆</span>
+          <span class="brand-name">Hen &amp; Harvest</span>
+        </a>
+        <p class="footer-tagline">Fine Philippine poultry raised with patience, honor, and care in the tropical countryside.</p>
+      </div>
+
+      <div class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#shop">Shop </a></li>
+          <li><a href="#categories">Age Groups</a></li>
+          <li><a href="#our-farm">Our Farm Story</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4>Farm Inquiries</h4>
+        <p>Davao City, Philippines</p>
+        <p>inquiries@henandharvest.ph</p>
+        <p>+63 (043) 728-1902</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Hen &amp; Harvest Poultry Estate. Demo E-Commerce Platform.</p>
+    </div>
+  </footer>
+
+  <!-- Product Details Modal -->
+  <div class="modal-backdrop hidden" id="productModal">
+    <div class="modal-container">
+      <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+      <div class="modal-content" id="modalContent">
+        <!-- JS injects product details -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="cart-backdrop hidden" id="cartBackdrop"></div>
+  <aside class="cart-drawer hidden" id="cartDrawer">
+    <div class="cart-header">
+      <h3>Your Selected Order</h3>
+      <button class="cart-close" id="closeCartBtn">&times;</button>
+    </div>
+    <div class="cart-body" id="cartItemsContainer">
+      <!-- Dynamic cart list -->
+    </div>
+    <div class="cart-footer">
+      <div class="cart-total-row">
+        <span>Subtotal</span>
+        <span id="cartSubtotal">₱0.00</span>
+      </div>
+      <p class="cart-disclaimer">Prices are in Philippine Pesos (₱). Demonstration checkout only.</p>
+      <button class="btn btn-primary full-width" id="checkoutBtn">Proceed to Reservation</button>
+    </div>
+  </aside>
+
+  <script src="script.js"></script>
+</body>
+</html>
